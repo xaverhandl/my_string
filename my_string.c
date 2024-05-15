@@ -70,50 +70,33 @@ char* multiplystr(char* string, int n){
 }
 //Finde Substring in String (ist der substring da oder nicht?) returnt 1 wenn er da ist, 0 wenn nicht
 int findstr(char* string, char* sub_string){
-    int l_sub = len(sub_string);
-    int l_s = len(string);
-    char sub_array[l_sub];
-    char string_array[l_s];
-    for(int i=0; i<l_sub;i++){
-        sub_array[i] = sub_string[i];
-    }
-    for(int j= 0; j<l_s; j++){
-        string_array[j] = string[j];
-    }
-    char compare_string[l_sub];
-    for(int x = 0; x<l_sub; x++){
-        compare_string[x] = '0';
-    }
-    int start = 0;
-    int end = l_sub;
-    int is_true;
-    int counter = 0;
-    while(end != l_s){
-        for(int k = start; k<end; k++){
-            char current = string_array[k];
-            compare_string[counter] = string_array[k];//peter_maffi_123
+    int l1 = len(string);
+    int l2 = len(sub_string);
+    int window_start = 0;
+    int window_end = l2;
+    char comp_string[l2];
+    while(window_end != l1){
+        int counter = 0;
+        for(int i = window_start; i<window_end; i++){
+            comp_string[counter] = string[i];
             counter++;
         }
-        if(comparestr(compare_string,sub_array) == 0){
-        }
-        else{
+        if(comparestr(comp_string,sub_string) == 1){
             return 1;
         }
-
-        
-        start++;
-        end++;
-
+        window_start++;
+        window_end++;
     }
     return 0;
 }
 int main(void){
-    char* s1 = "peter_maffei_123";
-    char* s2 = "maffei";
-    int l1 = len(s1);
+    FILE* fp = fopen("test_string.txt","r");
+    char buffer[3948271953+1];
+    size_t read_size = fread(buffer, 1, 3948271953, fp);
+    char* s2 = "deorm";
     int l2 = len(s2);
     int n = 5;
-    int is_true = findstr(s1,s2);
+    int is_true = findstr(buffer,s2);
     printf("%d",is_true);
 
     }
