@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //vergleicht zwei strings ob sie identisch sind, gibt 0 oder 1 zurück
-int comparestr(char*s1, char*s2){
+int comparestr(char* s1, char* s2){
     int l1 = len(s1);
     int l2 = len(s2);
     if(l1 != l2){
@@ -15,8 +15,9 @@ int comparestr(char*s1, char*s2){
                 return 0;
             }
         }
+        return 1;
     }
-    return 1;
+
 }
 //Bestimmt länge von einem string
 int len(char* string){
@@ -85,22 +86,26 @@ int findstr(char* string, char* sub_string){
     }
     int start = 0;
     int end = l_sub;
-    int is_true = 1;
+    int is_true;
+    int counter = 0;
     while(end != l_s){
         for(int k = start; k<end; k++){
-            compare_string[k] = string[k];
+            char current = string_array[k];
+            compare_string[counter] = string_array[k];//peter_maffi_123
+            counter++;
         }
-        for(int k1 = 0; k1<l_sub; k1++){
-            if(compare_string[k1] != sub_array[k1]){
-                is_true = 0;
-            }
+        if(comparestr(compare_string,sub_array) == 0){
+        }
+        else{
+            return 1;
+        }
 
-        }
+        
         start++;
         end++;
 
     }
-    return is_true;
+    return 0;
 }
 int main(void){
     char* s1 = "peter_maffei_123";
