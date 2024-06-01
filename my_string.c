@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 //my own string library by Xaver Handl
 
@@ -13,7 +13,7 @@ int mypow(int base, int exponent){
         ret_val = ret_val * base;
     }
     return ret_val;
-=======
+
 // my own string library by Xaver Handl
 
 #include <stdio.h>
@@ -34,7 +34,7 @@ float negativemypow(int base, int exponent) {
   }
   return ret_val;
 }
-<<<<<<< HEAD
+
 //Bestimmt länge von einem string
 int len(char* string){
     int l = 0;
@@ -175,7 +175,7 @@ int main(void){
 
     }
 
-=======
+
 // Bestimmt länge von einem string
 int len(char *string) {
   int l = 0;
@@ -291,4 +291,4 @@ int main(void) {
   float t = 12.28192891839138;
   printf("%f", t);
 }
->>>>>>> e1be94f6826a32f1802adb59231fb4dd8835a6ac
+
